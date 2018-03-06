@@ -33,19 +33,15 @@ public class Lambda_03_Test {
 		List<Person> personList = Data.buildPersonList(100);
 
 		// vérifier qu'une personne à un prénom qui commence par first
-		//  vérifier qu'une personne à un nom qui commence par last
-		//  vérifier qu'une personne à un age > 0
-		//  la vérification se fait via une assertion (mot clé assert)
-		PersonProcessor verifyPerson = new PersonProcessor() {
-			
-			@Override
-			public void process(Person p) {
-				boolean isGoodFistname = p.getFirstname().startsWith("first");
-				boolean isGoodLastname = p.getLastname().startsWith("last");
-				boolean isGoodAge = p.getAge() > 0;
-				
-				assert isGoodAge && isGoodFistname && isGoodLastname;
-			}
+		// vérifier qu'une personne à un nom qui commence par last
+		// vérifier qu'une personne à un age > 0
+		// la vérification se fait via une assertion (mot clé assert)
+		PersonProcessor verifyPerson = p -> {
+			boolean isGoodFistname = p.getFirstname().startsWith("first");
+			boolean isGoodLastname = p.getLastname().startsWith("last");
+			boolean isGoodAge = p.getAge() > 0;
+
+			assert isGoodAge && isGoodFistname && isGoodLastname;
 		};
 
 		assert verifyPerson != null;
