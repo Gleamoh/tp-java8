@@ -19,6 +19,12 @@ public class Lambda_02_Test {
         T map(Person p);
     }
     
+    //ou
+    
+//    interface Mapper<A, B> {
+//    	A map(B b)
+//    }
+    
 //    interface PersonToFirstname {
 //    	String map(Person p);
 //    }
