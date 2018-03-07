@@ -1,13 +1,14 @@
 package java8.ex06;
 
 
-import java8.data.Person;
+import java.util.Objects;
+import java.util.function.Supplier;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.Objects;
-import java.util.function.Supplier;
+import java8.data.Person;
 
 /**
  * Exercice 06 - java.util.function.Supplier
@@ -18,19 +19,19 @@ public class Function_06_Test {
     public ExpectedException expectedException = ExpectedException.none();
 
     // tag::formatAge[]
-    // TODO compléter la méthode
-    // TODO la méthode retourne une chaîne de caractères de la forme [age=<AGE>] (exemple : [age=12])
+    // compléter la méthode
+    // la méthode retourne une chaîne de caractères de la forme [age=<AGE>] (exemple : [age=12])
     String formatAge(Supplier<Person> supplier) {
-        // TODO
-        return null;
+        
+        return String.format("[age=%d]", supplier.get().getAge());
     }
     // end::formatAge[]
 
 
     @Test
     public void test_supplier_formatAge() throws Exception {
-        // TODO compléter le test unitaire pour qu'il soit passant
-        String result = formatAge(null);
+        // compléter le test unitaire pour qu'il soit passant
+        String result = formatAge(() -> new Person("", "", 35, ""));
 
         assert result.equals("[age=35]");
     }
@@ -41,8 +42,8 @@ public class Function_06_Test {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("require non null object");
 
-        // TODO compléter le test unitaire pour qu'il soit passant
-        Supplier<String> supplier = null;
+        //  compléter le test unitaire pour qu'il soit passant
+        Supplier<String> supplier = () -> "require non null object";
 
         // Avec un paramètre null, cette méthode déclenche un NullPointerException
         Objects.requireNonNull(null, supplier);
