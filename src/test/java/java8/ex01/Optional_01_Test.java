@@ -37,14 +37,7 @@ public class Optional_01_Test {
 
 	// tag::findMethod[]
 	<T> T find(List<T> list, Predicate<T> predicate, T defaultValue) {
-		T result = null;
-
-		for (T p : list) {
-			if (predicate.test(p)) {
-				return p;
-			}
-		}
-		return defaultValue;
+		return find(list, predicate).orElse(defaultValue);
 	}
 	// end::findMethod[]
 	
