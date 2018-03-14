@@ -35,6 +35,9 @@ public class Stream_02_Test {
 
 		// recuper la listes des clients
 		List<Customer> result = customerOrders.keySet().stream().collect(Collectors.toList());
+		 
+		// ou tout simplement :-)
+		// result = orders.stream().map(Order::getCustomer).distinct().collect(Collectors.toList());
 
 		assertThat(result, hasSize(2));
 	}
