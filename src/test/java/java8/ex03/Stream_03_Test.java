@@ -78,8 +78,9 @@ public class Stream_03_Test {
         // 2. grouper par genre
         // 3. Appliquer le formatage
         
-        Map<Gender, String> result = customers.stream().sorted(Comparator.comparing(Customer::getFirstname)).collect(groupingBy(Customer::getGender, 
-        		Collectors. mapping(Customer::getFirstname, joining("|"))));
+        Map<Gender, String> result = customers.stream()
+        		.sorted(Comparator.comparing(Customer::getFirstname))
+        		.collect(groupingBy(Customer::getGender, mapping(Customer::getFirstname, joining("|"))));
 
         assertThat(result.get(Gender.F), is("Alexandra|Marion|Sophie"));
         assertThat(result.get(Gender.M), is("Cyril|Johnny"));
